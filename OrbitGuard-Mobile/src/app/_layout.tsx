@@ -33,6 +33,13 @@ export default function RootLayout() {
             title: "Usuários",
           }}
         />
+
+        <Stack.Screen
+          name="novo-usuario"
+          options={{
+            title: "Novo Usuário",
+          }}
+        />
       </Stack>
     </>
   );
