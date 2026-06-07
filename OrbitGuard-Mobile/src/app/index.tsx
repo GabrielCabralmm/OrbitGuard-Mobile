@@ -23,6 +23,10 @@ export default function HomeScreen() {
         <Link href="/regioes" style={styles.secondaryButton}>
           Regiões
         </Link>
+
+        <Link href="/sobre" style={styles.secondaryButton}>
+          Sobre o Projeto
+        </Link>
       </View>
     </View>
   );
