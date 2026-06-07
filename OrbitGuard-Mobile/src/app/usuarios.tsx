@@ -1,7 +1,8 @@
-import { Link, useFocusEffect } from "expo-router";
+import { Link, router, useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   Pressable,
   StyleSheet,
@@ -27,10 +28,61 @@ export default function UsuariosScreen() {
       } else {
         setUsuarios([]);
       }
-    } catch (error) {
+    } catch {
       setUsuarios([]);
     } finally {
       setLoading(false);
+    }
+  }
+
+  function editarUsuario(usuario: Usuario) {
+    router.push({
+      pathname: "/editar-usuario",
+      params: {
+        idUsuario: String(usuario.idUsuario),
+        nome: usuario.nome,
+        email: usuario.email,
+        perfil: usuario.perfil,
+        telefone: usuario.telefone,
+        ativo: usuario.ativo,
+      },
+    });
+  }
+
+  function confirmarExclusao(usuario: Usuario) {
+    Alert.alert(
+      "Excluir usuário",
+      `Deseja realmente excluir ${usuario.nome}?`,
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Excluir",
+          style: "destructive",
+          onPress: () => excluirUsuario(usuario.idUsuario),
+        },
+      ]
+    );
+  }
+
+  async function excluirUsuario(idUsuario?: number) {
+    if (!idUsuario) {
+      Alert.alert("Erro", "Usuário inválido.");
+      return;
+    }
+
+    try {
+      await api.delete(`/Usuario/${idUsuario}`);
+      Alert.alert("Sucesso", "Usuário excluído com sucesso.");
+      carregarUsuarios();
+    } catch (error: any) {
+      const mensagem =
+        error?.response?.data ||
+        "Não foi possível excluir o usuário. Tente novamente.";
+
+      Alert.alert("Erro", String(mensagem));
     }
   }
 
@@ -71,9 +123,7 @@ export default function UsuariosScreen() {
       ) : (
         <FlatList
           data={usuarios}
-          keyExtractor={(item) =>
-            item.idUsuario?.toString() ?? item.email
-          }
+          keyExtractor={(item) => item.idUsuario?.toString() ?? item.email}
           renderItem={({ item }) => (
             <View style={styles.card}>
               <Text style={styles.nome}>{item.nome}</Text>
@@ -83,6 +133,22 @@ export default function UsuariosScreen() {
               <Text style={styles.status}>
                 Status: {item.ativo === "S" ? "Ativo" : "Inativo"}
               </Text>
+
+              <View style={styles.actions}>
+                <Pressable
+                  style={styles.editButton}
+                  onPress={() => editarUsuario(item)}
+                >
+                  <Text style={styles.actionText}>Editar</Text>
+                </Pressable>
+
+                <Pressable
+                  style={styles.deleteButton}
+                  onPress={() => confirmarExclusao(item)}
+                >
+                  <Text style={styles.deleteText}>Excluir</Text>
+                </Pressable>
+              </View>
             </View>
           )}
           contentContainerStyle={styles.listContent}
@@ -165,6 +231,38 @@ const styles = StyleSheet.create({
     color: "#38BDF8",
     fontWeight: "700",
     marginTop: 8,
+  },
+
+  actions: {
+    flexDirection: "row",
+    gap: 10,
+    marginTop: 14,
+  },
+
+  editButton: {
+    flex: 1,
+    backgroundColor: "#38BDF8",
+    paddingVertical: 10,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  deleteButton: {
+    flex: 1,
+    backgroundColor: "#7F1D1D",
+    paddingVertical: 10,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  actionText: {
+    color: "#0F172A",
+    fontWeight: "700",
+  },
+
+  deleteText: {
+    color: "#FFFFFF",
+    fontWeight: "700",
   },
 
   emptyContainer: {

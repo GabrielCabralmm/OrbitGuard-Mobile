@@ -20,26 +20,10 @@ export default function RootLayout() {
           },
         }}
       >
-        <Stack.Screen
-          name="index"
-          options={{
-            title: "OrbitGuard",
-          }}
-        />
-
-        <Stack.Screen
-          name="usuarios"
-          options={{
-            title: "Usuários",
-          }}
-        />
-
-        <Stack.Screen
-          name="novo-usuario"
-          options={{
-            title: "Novo Usuário",
-          }}
-        />
+        <Stack.Screen name="index" options={{ title: "OrbitGuard" }} />
+        <Stack.Screen name="usuarios" options={{ title: "Usuários" }} />
+        <Stack.Screen name="novo-usuario" options={{ title: "Novo Usuário" }} />
+        <Stack.Screen name="editar-usuario" options={{ title: "Editar Usuário" }} />
       </Stack>
     </>
   );
