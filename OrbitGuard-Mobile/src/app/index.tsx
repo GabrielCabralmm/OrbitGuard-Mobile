@@ -12,7 +12,7 @@ export default function HomeScreen() {
 
       <Text style={styles.subtitle}>
         Aplicativo mobile integrado à API OrbitGuard para acompanhar dados,
-        usuários e regiões monitoradas.
+        usuários, regiões e alertas ambientais.
       </Text>
 
       <View style={styles.actions}>
@@ -22,6 +22,10 @@ export default function HomeScreen() {
 
         <Link href="/regioes" style={styles.secondaryButton}>
           Regiões
+        </Link>
+
+        <Link href="/alertas" style={styles.secondaryButton}>
+          Alertas
         </Link>
 
         <Link href="/sobre" style={styles.secondaryButton}>

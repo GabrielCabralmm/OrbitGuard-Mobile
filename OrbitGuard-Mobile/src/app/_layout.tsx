@@ -25,6 +25,7 @@ export default function RootLayout() {
         <Stack.Screen name="novo-usuario" options={{ title: "Novo Usuário" }} />
         <Stack.Screen name="editar-usuario" options={{ title: "Editar Usuário" }} />
         <Stack.Screen name="regioes" options={{ title: "Regiões" }} />
+        <Stack.Screen name="alertas" options={{ title: "Alertas" }} />
         <Stack.Screen name="sobre" options={{ title: "Sobre" }} />
       </Stack>
     </>
