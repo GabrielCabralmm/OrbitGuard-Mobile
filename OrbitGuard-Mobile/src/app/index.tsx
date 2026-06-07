@@ -4,20 +4,24 @@ import { StyleSheet, Text, View } from "react-native";
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
+      <Text style={styles.eyebrow}>ORBITAL SAFETY SYSTEM</Text>
+
       <Text style={styles.logo}>OrbitGuard</Text>
 
       <Text style={styles.title}>
-        Monitoramento Inteligente de Riscos Ambientais
+        Proteção inteligente para regiões em risco
       </Text>
 
       <Text style={styles.subtitle}>
-        Aplicativo mobile integrado à API OrbitGuard para acompanhar dados,
-        usuários, regiões e alertas ambientais.
+        Acompanhe regiões monitoradas, alertas ambientais e usuários envolvidos
+        em ações preventivas.
       </Text>
+
+      <View style={styles.planet} />
 
       <View style={styles.actions}>
         <Link href="/painel" style={styles.primaryButton}>
-          Painel
+          Abrir Painel
         </Link>
 
         <Link href="/usuarios" style={styles.secondaryButton}>
@@ -43,33 +47,52 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0F172A",
+    backgroundColor: "#050816",
     justifyContent: "center",
     alignItems: "center",
     padding: 24,
   },
 
-  logo: {
-    fontSize: 36,
+  eyebrow: {
+    color: "#7DD3FC",
+    fontSize: 12,
     fontWeight: "800",
-    color: "#38BDF8",
-    marginBottom: 16,
+    letterSpacing: 2,
+    marginBottom: 10,
+  },
+
+  logo: {
+    fontSize: 42,
+    fontWeight: "900",
+    color: "#FFFFFF",
+    marginBottom: 12,
   },
 
   title: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "#FFFFFF",
+    fontSize: 25,
+    fontWeight: "800",
+    color: "#E0F2FE",
     textAlign: "center",
     marginBottom: 12,
   },
 
   subtitle: {
     fontSize: 16,
-    color: "#CBD5E1",
+    color: "#A5B4FC",
     textAlign: "center",
-    marginBottom: 32,
-    lineHeight: 22,
+    marginBottom: 26,
+    lineHeight: 23,
+  },
+
+  planet: {
+    width: 110,
+    height: 110,
+    borderRadius: 999,
+    backgroundColor: "#1D4ED8",
+    borderWidth: 10,
+    borderColor: "#38BDF8",
+    marginBottom: 26,
+    opacity: 0.9,
   },
 
   actions: {
@@ -79,25 +102,25 @@ const styles = StyleSheet.create({
 
   primaryButton: {
     backgroundColor: "#38BDF8",
-    color: "#0F172A",
+    color: "#020617",
     paddingVertical: 14,
-    borderRadius: 12,
-    fontWeight: "800",
+    borderRadius: 14,
+    fontWeight: "900",
     fontSize: 16,
     textAlign: "center",
     overflow: "hidden",
   },
 
   secondaryButton: {
-    backgroundColor: "#1E293B",
-    color: "#FFFFFF",
+    backgroundColor: "#111827",
+    color: "#E0F2FE",
     paddingVertical: 14,
-    borderRadius: 12,
-    fontWeight: "700",
+    borderRadius: 14,
+    fontWeight: "800",
     fontSize: 16,
     textAlign: "center",
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: "#334155",
+    borderColor: "#312E81",
   },
 });

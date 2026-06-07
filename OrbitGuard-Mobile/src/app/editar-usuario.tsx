@@ -10,10 +10,28 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  View,
 } from "react-native";
 
 import { api } from "../services/api";
 import { Usuario } from "../types/usuario";
+
+const perfis = ["CIDADÃO", "DEFESA CIVIL", "OPERADOR", "ADMIN"];
+
+const perfilApi: Record<string, string> = {
+  "CIDADÃO": "CIDADAO",
+  "DEFESA CIVIL": "GESTOR",
+  OPERADOR: "OPERADOR",
+  ADMIN: "ADMIN",
+};
+
+function converterPerfilParaTela(perfil?: string) {
+  if (perfil === "CIDADAO") return "CIDADÃO";
+  if (perfil === "GESTOR") return "DEFESA CIVIL";
+  if (perfil === "OPERADOR") return "OPERADOR";
+  if (perfil === "ADMIN") return "ADMIN";
+  return "CIDADÃO";
+}
 
 export default function EditarUsuarioScreen() {
   const params = useLocalSearchParams();
@@ -21,13 +39,15 @@ export default function EditarUsuarioScreen() {
   const idUsuario = Number(params.idUsuario);
   const [nome, setNome] = useState(String(params.nome ?? ""));
   const [email, setEmail] = useState(String(params.email ?? ""));
-  const [perfil, setPerfil] = useState(String(params.perfil ?? "ADMIN"));
+  const [perfil, setPerfil] = useState(
+    converterPerfilParaTela(String(params.perfil ?? "CIDADAO"))
+  );
   const [telefone, setTelefone] = useState(String(params.telefone ?? ""));
   const [ativo, setAtivo] = useState(String(params.ativo ?? "S"));
   const [loading, setLoading] = useState(false);
 
   async function atualizarUsuario() {
-    if (!idUsuario || !nome.trim() || !email.trim() || !perfil.trim()) {
+    if (!idUsuario || !nome.trim() || !email.trim()) {
       Alert.alert("Atenção", "Preencha os campos obrigatórios.");
       return;
     }
@@ -39,7 +59,7 @@ export default function EditarUsuarioScreen() {
         idUsuario,
         nome: nome.trim(),
         email: email.trim().toLowerCase(),
-        perfil: perfil.trim().toUpperCase(),
+        perfil: perfilApi[perfil],
         telefone: telefone.trim(),
         ativo: ativo.trim().toUpperCase(),
       };
@@ -65,6 +85,7 @@ export default function EditarUsuarioScreen() {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.eyebrow}>ATUALIZAÇÃO DE ACESSO</Text>
         <Text style={styles.title}>Editar Usuário</Text>
 
         <Text style={styles.label}>Nome</Text>
@@ -88,14 +109,27 @@ export default function EditarUsuarioScreen() {
         />
 
         <Text style={styles.label}>Perfil</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="ADMIN"
-          placeholderTextColor="#64748B"
-          value={perfil}
-          onChangeText={setPerfil}
-          autoCapitalize="characters"
-        />
+        <View style={styles.profileGrid}>
+          {perfis.map((item) => (
+            <Pressable
+              key={item}
+              style={[
+                styles.profileButton,
+                perfil === item && styles.profileButtonActive,
+              ]}
+              onPress={() => setPerfil(item)}
+            >
+              <Text
+                style={[
+                  styles.profileText,
+                  perfil === item && styles.profileTextActive,
+                ]}
+              >
+                {item}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
 
         <Text style={styles.label}>Telefone</Text>
         <TextInput
@@ -107,16 +141,28 @@ export default function EditarUsuarioScreen() {
           keyboardType="phone-pad"
         />
 
-        <Text style={styles.label}>Ativo</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="S ou N"
-          placeholderTextColor="#64748B"
-          value={ativo}
-          onChangeText={setAtivo}
-          autoCapitalize="characters"
-          maxLength={1}
-        />
+        <Text style={styles.label}>Status</Text>
+        <View style={styles.profileGrid}>
+          {["S", "N"].map((item) => (
+            <Pressable
+              key={item}
+              style={[
+                styles.profileButton,
+                ativo === item && styles.profileButtonActive,
+              ]}
+              onPress={() => setAtivo(item)}
+            >
+              <Text
+                style={[
+                  styles.profileText,
+                  ativo === item && styles.profileTextActive,
+                ]}
+              >
+                {item === "S" ? "ATIVO" : "INATIVO"}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
 
         <Pressable
           style={[styles.button, loading && styles.buttonDisabled]}
@@ -124,7 +170,7 @@ export default function EditarUsuarioScreen() {
           disabled={loading}
         >
           {loading ? (
-            <ActivityIndicator color="#0F172A" />
+            <ActivityIndicator color="#020617" />
           ) : (
             <Text style={styles.buttonText}>Salvar alterações</Text>
           )}
@@ -137,7 +183,7 @@ export default function EditarUsuarioScreen() {
 const styles = StyleSheet.create({
   keyboardContainer: {
     flex: 1,
-    backgroundColor: "#0F172A",
+    backgroundColor: "#050816",
   },
 
   container: {
@@ -145,34 +191,73 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 
+  eyebrow: {
+    color: "#7DD3FC",
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 2,
+    marginBottom: 8,
+  },
+
   title: {
     fontSize: 28,
-    fontWeight: "700",
+    fontWeight: "900",
     color: "#FFFFFF",
     marginBottom: 24,
   },
 
   label: {
-    color: "#CBD5E1",
+    color: "#BFDBFE",
     fontSize: 14,
-    fontWeight: "600",
+    fontWeight: "700",
     marginBottom: 8,
   },
 
   input: {
-    backgroundColor: "#1E293B",
+    backgroundColor: "#111827",
     color: "#FFFFFF",
-    borderRadius: 12,
+    borderRadius: 14,
     paddingHorizontal: 14,
     paddingVertical: 14,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: "#334155",
+    borderColor: "#312E81",
+  },
+
+  profileGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    marginBottom: 16,
+  },
+
+  profileButton: {
+    backgroundColor: "#111827",
+    borderColor: "#312E81",
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+  },
+
+  profileButtonActive: {
+    backgroundColor: "#38BDF8",
+    borderColor: "#38BDF8",
+  },
+
+  profileText: {
+    color: "#CBD5E1",
+    fontWeight: "800",
+    fontSize: 12,
+  },
+
+  profileTextActive: {
+    color: "#020617",
   },
 
   button: {
     backgroundColor: "#38BDF8",
-    borderRadius: 12,
+    borderRadius: 14,
     paddingVertical: 16,
     alignItems: "center",
     marginTop: 8,
@@ -183,8 +268,8 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "#0F172A",
+    color: "#020617",
     fontSize: 16,
-    fontWeight: "700",
+    fontWeight: "900",
   },
 });
