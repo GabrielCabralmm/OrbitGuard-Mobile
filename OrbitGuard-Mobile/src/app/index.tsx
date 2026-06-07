@@ -16,7 +16,11 @@ export default function HomeScreen() {
       </Text>
 
       <View style={styles.actions}>
-        <Link href="/usuarios" style={styles.primaryButton}>
+        <Link href="/painel" style={styles.primaryButton}>
+          Painel
+        </Link>
+
+        <Link href="/usuarios" style={styles.secondaryButton}>
           Usuários
         </Link>
 
@@ -47,7 +51,7 @@ const styles = StyleSheet.create({
 
   logo: {
     fontSize: 36,
-    fontWeight: "700",
+    fontWeight: "800",
     color: "#38BDF8",
     marginBottom: 16,
   },
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
     color: "#0F172A",
     paddingVertical: 14,
     borderRadius: 12,
-    fontWeight: "700",
+    fontWeight: "800",
     fontSize: 16,
     textAlign: "center",
     overflow: "hidden",
