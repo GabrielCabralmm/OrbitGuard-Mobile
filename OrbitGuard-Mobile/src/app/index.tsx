@@ -15,9 +15,15 @@ export default function HomeScreen() {
         usuários e regiões monitoradas.
       </Text>
 
-      <Link href="/usuarios" style={styles.button}>
-        Acessar usuários
-      </Link>
+      <View style={styles.actions}>
+        <Link href="/usuarios" style={styles.primaryButton}>
+          Usuários
+        </Link>
+
+        <Link href="/regioes" style={styles.secondaryButton}>
+          Regiões
+        </Link>
+      </View>
     </View>
   );
 }
@@ -54,14 +60,32 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
 
-  button: {
+  actions: {
+    width: "100%",
+    gap: 12,
+  },
+
+  primaryButton: {
     backgroundColor: "#38BDF8",
     color: "#0F172A",
     paddingVertical: 14,
-    paddingHorizontal: 24,
     borderRadius: 12,
     fontWeight: "700",
     fontSize: 16,
+    textAlign: "center",
     overflow: "hidden",
+  },
+
+  secondaryButton: {
+    backgroundColor: "#1E293B",
+    color: "#FFFFFF",
+    paddingVertical: 14,
+    borderRadius: 12,
+    fontWeight: "700",
+    fontSize: 16,
+    textAlign: "center",
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "#334155",
   },
 });
