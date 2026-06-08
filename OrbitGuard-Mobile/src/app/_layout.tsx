@@ -9,25 +9,26 @@ export default function RootLayout() {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#0F172A",
+            backgroundColor: "#030712",
           },
           headerTintColor: "#FFFFFF",
           headerTitleStyle: {
-            fontWeight: "700",
+            fontWeight: "800",
           },
           contentStyle: {
-            backgroundColor: "#0F172A",
+            backgroundColor: "#030712",
           },
         }}
       >
         <Stack.Screen name="index" options={{ title: "OrbitGuard" }} />
         <Stack.Screen name="painel" options={{ title: "Painel" }} />
-        <Stack.Screen name="usuarios" options={{ title: "Usuários" }} />
+        <Stack.Screen name="usuarios" options={{ title: "Área Técnica" }} />
         <Stack.Screen name="novo-usuario" options={{ title: "Novo Usuário" }} />
         <Stack.Screen name="editar-usuario" options={{ title: "Editar Usuário" }} />
-        <Stack.Screen name="regioes" options={{ title: "Regiões" }} />
+        <Stack.Screen name="regioes" options={{ title: "Regiões Monitoradas" }} />
         <Stack.Screen name="alertas" options={{ title: "Alertas" }} />
-        <Stack.Screen name="sobre" options={{ title: "Sobre" }} />
+        <Stack.Screen name="sobre" options={{ title: "Orientações" }} />
+        <Stack.Screen name="abrigos" options={{ title: "Abrigos" }} />
       </Stack>
     </>
   );

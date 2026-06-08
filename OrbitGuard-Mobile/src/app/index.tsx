@@ -4,42 +4,48 @@ import { StyleSheet, Text, View } from "react-native";
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.eyebrow}>ORBITAL SAFETY SYSTEM</Text>
+      <View style={styles.orbitOne} />
+      <View style={styles.orbitTwo} />
 
-      <Text style={styles.logo}>OrbitGuard</Text>
+      <Text style={styles.eyebrow}>ORBITGUARD</Text>
 
-      <Text style={styles.title}>
-        Proteção inteligente para regiões em risco
-      </Text>
+      <Text style={styles.title}>Sua região está segura?</Text>
 
       <Text style={styles.subtitle}>
-        Acompanhe regiões monitoradas, alertas ambientais e usuários envolvidos
-        em ações preventivas.
+        Acompanhe alertas ambientais, regiões monitoradas e orientações de
+        proteção em tempo real.
       </Text>
 
-      <View style={styles.planet} />
+      <View style={styles.alertCard}>
+        <Text style={styles.alertLabel}>ALERTA PRINCIPAL</Text>
+        <Text style={styles.alertTitle}>Monitoramento ativo</Text>
+        <Text style={styles.alertText}>
+          Consulte os alertas registrados e acompanhe possíveis riscos em áreas
+          monitoradas.
+        </Text>
+      </View>
 
-      <View style={styles.actions}>
-        <Link href="/painel" style={styles.primaryButton}>
-          Abrir Painel
-        </Link>
-
-        <Link href="/usuarios" style={styles.secondaryButton}>
-          Usuários
+      <View style={styles.grid}>
+        <Link href="/alertas" style={styles.primaryButton}>
+          Ver Alertas
         </Link>
 
         <Link href="/regioes" style={styles.secondaryButton}>
           Regiões
         </Link>
 
-        <Link href="/alertas" style={styles.secondaryButton}>
-          Alertas
+        <Link href="/abrigos" style={styles.secondaryButton}>
+          Abrigos
         </Link>
 
         <Link href="/sobre" style={styles.secondaryButton}>
-          Sobre o Projeto
+          Orientações
         </Link>
       </View>
+
+      <Link href="/usuarios" style={styles.technicalLink}>
+        Área técnica
+      </Link>
     </View>
   );
 }
@@ -47,80 +53,121 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#050816",
+    backgroundColor: "#030712",
     justifyContent: "center",
-    alignItems: "center",
     padding: 24,
+    overflow: "hidden",
+  },
+
+  orbitOne: {
+    position: "absolute",
+    width: 280,
+    height: 280,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: "#1E40AF",
+    top: -70,
+    right: -120,
+    opacity: 0.8,
+  },
+
+  orbitTwo: {
+    position: "absolute",
+    width: 420,
+    height: 420,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: "#312E81",
+    bottom: -160,
+    left: -180,
+    opacity: 0.7,
   },
 
   eyebrow: {
-    color: "#7DD3FC",
-    fontSize: 12,
-    fontWeight: "800",
-    letterSpacing: 2,
-    marginBottom: 10,
-  },
-
-  logo: {
-    fontSize: 42,
+    color: "#38BDF8",
+    fontSize: 13,
     fontWeight: "900",
-    color: "#FFFFFF",
+    letterSpacing: 3,
     marginBottom: 12,
   },
 
   title: {
-    fontSize: 25,
-    fontWeight: "800",
-    color: "#E0F2FE",
-    textAlign: "center",
+    color: "#FFFFFF",
+    fontSize: 38,
+    fontWeight: "900",
+    lineHeight: 44,
     marginBottom: 12,
   },
 
   subtitle: {
-    fontSize: 16,
     color: "#A5B4FC",
-    textAlign: "center",
+    fontSize: 16,
+    lineHeight: 24,
     marginBottom: 26,
-    lineHeight: 23,
   },
 
-  planet: {
-    width: 110,
-    height: 110,
-    borderRadius: 999,
-    backgroundColor: "#1D4ED8",
-    borderWidth: 10,
-    borderColor: "#38BDF8",
-    marginBottom: 26,
-    opacity: 0.9,
+  alertCard: {
+    backgroundColor: "#111827",
+    borderRadius: 20,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: "#1D4ED8",
+    marginBottom: 22,
   },
 
-  actions: {
-    width: "100%",
+  alertLabel: {
+    color: "#38BDF8",
+    fontSize: 12,
+    fontWeight: "900",
+    letterSpacing: 1.5,
+    marginBottom: 8,
+  },
+
+  alertTitle: {
+    color: "#FFFFFF",
+    fontSize: 22,
+    fontWeight: "900",
+    marginBottom: 8,
+  },
+
+  alertText: {
+    color: "#CBD5E1",
+    fontSize: 15,
+    lineHeight: 22,
+  },
+
+  grid: {
     gap: 12,
   },
 
   primaryButton: {
     backgroundColor: "#38BDF8",
     color: "#020617",
-    paddingVertical: 14,
-    borderRadius: 14,
+    textAlign: "center",
+    paddingVertical: 15,
+    borderRadius: 16,
     fontWeight: "900",
     fontSize: 16,
-    textAlign: "center",
     overflow: "hidden",
   },
 
   secondaryButton: {
     backgroundColor: "#111827",
     color: "#E0F2FE",
-    paddingVertical: 14,
-    borderRadius: 14,
+    textAlign: "center",
+    paddingVertical: 15,
+    borderRadius: 16,
     fontWeight: "800",
     fontSize: 16,
-    textAlign: "center",
-    overflow: "hidden",
     borderWidth: 1,
     borderColor: "#312E81",
+    overflow: "hidden",
+  },
+
+  technicalLink: {
+    color: "#64748B",
+    textAlign: "center",
+    marginTop: 22,
+    fontWeight: "700",
   },
 });
