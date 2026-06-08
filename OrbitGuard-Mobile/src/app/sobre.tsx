@@ -3,53 +3,75 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 export default function SobreScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.logo}>OrbitGuard</Text>
+      <View style={styles.orbit} />
 
-      <Text style={styles.title}>Sobre a Solução</Text>
+      <Text style={styles.eyebrow}>GUIA DE PROTEÇÃO</Text>
+      <Text style={styles.title}>Orientações de Segurança</Text>
 
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Proposta</Text>
-        <Text style={styles.cardText}>
-          O OrbitGuard é uma solução voltada ao monitoramento de riscos
-          ambientais, conectando dados, regiões monitoradas, usuários, sensores
-          e alertas para apoiar ações preventivas.
+      <Text style={styles.subtitle}>
+        Consulte recomendações rápidas para agir com segurança em situações de
+        risco ambiental.
+      </Text>
+
+      <View style={styles.alertCard}>
+        <Text style={styles.alertTitle}>Em caso de emergência</Text>
+        <Text style={styles.alertText}>
+          Procure um local seguro, acompanhe os alertas oficiais e evite áreas
+          de risco até a situação ser normalizada.
         </Text>
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Relação com a Global Solution</Text>
+        <Text style={styles.icon}>🌧️</Text>
+        <Text style={styles.cardTitle}>Enchentes e alagamentos</Text>
         <Text style={styles.cardText}>
-          A proposta se conecta ao tema da economia espacial ao utilizar dados
-          e infraestrutura tecnológica para apoiar decisões relacionadas ao
-          clima, prevenção de desastres e cidades mais resilientes.
+          Evite atravessar ruas alagadas, não entre em correntezas e desligue a
+          energia elétrica caso a água alcance a residência.
         </Text>
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Integração com API</Text>
+        <Text style={styles.icon}>⛰️</Text>
+        <Text style={styles.cardTitle}>Deslizamentos</Text>
         <Text style={styles.cardText}>
-          O aplicativo consome uma API REST desenvolvida em .NET, publicada em
-          ambiente externo e integrada a um banco de dados Oracle.
+          Afaste-se de encostas, muros inclinados, rachaduras no solo e locais
+          com sinais de movimentação de terra.
         </Text>
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Tecnologias Utilizadas</Text>
-
-        <Text style={styles.item}>• React Native</Text>
-        <Text style={styles.item}>• Expo Router</Text>
-        <Text style={styles.item}>• TypeScript</Text>
-        <Text style={styles.item}>• Axios</Text>
-        <Text style={styles.item}>• API REST .NET</Text>
-        <Text style={styles.item}>• Oracle Database</Text>
+        <Text style={styles.icon}>🌩️</Text>
+        <Text style={styles.cardTitle}>Tempestades</Text>
+        <Text style={styles.cardText}>
+          Evite áreas abertas, árvores, postes e estruturas metálicas. Durante
+          raios, permaneça em local coberto e seguro.
+        </Text>
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Integrantes</Text>
+        <Text style={styles.icon}>☀️</Text>
+        <Text style={styles.cardTitle}>Calor extremo</Text>
+        <Text style={styles.cardText}>
+          Beba água com frequência, evite exposição prolongada ao sol e dê
+          atenção especial a crianças, idosos e animais.
+        </Text>
+      </View>
 
-        <Text style={styles.item}>• Enzo Monteiro Maciel</Text>
-        <Text style={styles.item}>• Gabriel Cabral Mendes Mariano</Text>
-        <Text style={styles.item}>• Matheus de Almeida Sousa</Text>
+      <View style={styles.card}>
+        <Text style={styles.icon}>🏠</Text>
+        <Text style={styles.cardTitle}>Abrigos</Text>
+        <Text style={styles.cardText}>
+          Em situações de risco, procure abrigos disponíveis e siga as
+          orientações das equipes de apoio e defesa civil.
+        </Text>
+      </View>
+
+      <View style={styles.footerCard}>
+        <Text style={styles.footerTitle}>OrbitGuard</Text>
+        <Text style={styles.footerText}>
+          Tecnologia para prevenção, monitoramento e proteção de comunidades em
+          áreas de risco.
+        </Text>
       </View>
     </ScrollView>
   );
@@ -58,7 +80,7 @@ export default function SobreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0F172A",
+    backgroundColor: "#030712",
   },
 
   content: {
@@ -66,33 +88,80 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 
-  logo: {
-    fontSize: 34,
-    fontWeight: "800",
+  orbit: {
+    position: "absolute",
+    width: 360,
+    height: 360,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: "#1D4ED8",
+    top: -160,
+    right: -160,
+    opacity: 0.6,
+  },
+
+  eyebrow: {
     color: "#38BDF8",
+    fontSize: 12,
+    fontWeight: "900",
+    letterSpacing: 2,
     marginBottom: 8,
   },
 
   title: {
-    fontSize: 26,
-    fontWeight: "700",
+    fontSize: 30,
+    fontWeight: "900",
     color: "#FFFFFF",
+    marginBottom: 8,
+  },
+
+  subtitle: {
+    color: "#A5B4FC",
+    fontSize: 15,
+    lineHeight: 22,
     marginBottom: 20,
   },
 
-  card: {
-    backgroundColor: "#1E293B",
-    borderRadius: 14,
-    padding: 16,
+  alertCard: {
+    backgroundColor: "#172554",
+    borderRadius: 18,
+    padding: 18,
     borderWidth: 1,
-    borderColor: "#334155",
+    borderColor: "#38BDF8",
     marginBottom: 14,
+  },
+
+  alertTitle: {
+    color: "#FFFFFF",
+    fontSize: 19,
+    fontWeight: "900",
+    marginBottom: 8,
+  },
+
+  alertText: {
+    color: "#E0F2FE",
+    fontSize: 15,
+    lineHeight: 22,
+  },
+
+  card: {
+    backgroundColor: "#111827",
+    borderRadius: 18,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: "#312E81",
+    marginBottom: 14,
+  },
+
+  icon: {
+    fontSize: 30,
+    marginBottom: 8,
   },
 
   cardTitle: {
     color: "#FFFFFF",
-    fontSize: 18,
-    fontWeight: "700",
+    fontSize: 19,
+    fontWeight: "900",
     marginBottom: 8,
   },
 
@@ -102,9 +171,25 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
 
-  item: {
+  footerCard: {
+    backgroundColor: "#020617",
+    borderRadius: 18,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: "#1E40AF",
+    marginTop: 4,
+  },
+
+  footerTitle: {
+    color: "#38BDF8",
+    fontSize: 22,
+    fontWeight: "900",
+    marginBottom: 6,
+  },
+
+  footerText: {
     color: "#CBD5E1",
     fontSize: 15,
-    lineHeight: 24,
+    lineHeight: 22,
   },
 });
