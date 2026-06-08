@@ -8,8 +8,8 @@ import {
   View,
 } from "react-native";
 
-import { api } from "../../services/api";
-import { Abrigo } from "../../types/abrigo";
+import { api } from "../services/api";
+import { Abrigo } from "../types/abrigo";
 
 function calcularOcupacao(capacidadeTotal: number, capacidadeOcupada: number) {
   if (capacidadeTotal <= 0) return 0;

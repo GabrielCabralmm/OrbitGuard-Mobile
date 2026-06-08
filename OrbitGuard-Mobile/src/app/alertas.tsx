@@ -8,8 +8,8 @@ import {
   View,
 } from "react-native";
 
-import { api } from "../../services/api";
-import { Alerta } from "../../types/alerta";
+import { api } from "../services/api";
+import { Alerta } from "../types/alerta";
 
 function getRiskColor(nivel: string) {
   const risco = nivel.toUpperCase();
