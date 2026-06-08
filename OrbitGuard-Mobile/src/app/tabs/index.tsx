@@ -30,19 +30,19 @@ export default function HomeScreen() {
           Abrir Painel
         </Link>
 
-        <Link href="/alertas" style={styles.secondaryButton}>
+        <Link href="/tabs/alertas" style={styles.secondaryButton}>
           Alertas
         </Link>
 
-        <Link href="/regioes" style={styles.secondaryButton}>
+        <Link href="/tabs/regioes" style={styles.secondaryButton}>
           Regiões
         </Link>
 
-        <Link href="/abrigos" style={styles.secondaryButton}>
+        <Link href="/tabs/abrigos" style={styles.secondaryButton}>
           Abrigos
         </Link>
 
-        <Link href="/sobre" style={styles.secondaryButton}>
+        <Link href="/tabs/sobre" style={styles.secondaryButton}>
           Orientações
         </Link>
 
