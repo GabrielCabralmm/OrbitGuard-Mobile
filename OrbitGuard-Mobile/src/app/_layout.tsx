@@ -1,5 +1,26 @@
-import { Stack } from "expo-router";
+import { Link, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { Platform, StyleSheet, useWindowDimensions, View } from "react-native";
+
+function HeaderNavigation() {
+  const { width } = useWindowDimensions();
+  const showDesktopMenu = Platform.OS === "web" || width >= 768;
+
+  if (!showDesktopMenu) {
+    return null;
+  }
+
+  return (
+    <View style={styles.nav}>
+      <Link href="/" style={styles.navLink}>Início</Link>
+      <Link href="/alertas" style={styles.navLink}>Alertas</Link>
+      <Link href="/regioes" style={styles.navLink}>Regiões</Link>
+      <Link href="/abrigos" style={styles.navLink}>Abrigos</Link>
+      <Link href="/sobre" style={styles.navLink}>Orientações</Link>
+      <Link href="/usuarios" style={styles.techLink}>Área Técnica</Link>
+    </View>
+  );
+}
 
 export default function RootLayout() {
   return (
@@ -13,8 +34,9 @@ export default function RootLayout() {
           },
           headerTintColor: "#FFFFFF",
           headerTitleStyle: {
-            fontWeight: "800",
+            fontWeight: "900",
           },
+          headerRight: () => <HeaderNavigation />,
           contentStyle: {
             backgroundColor: "#030712",
           },
@@ -33,3 +55,24 @@ export default function RootLayout() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  nav: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 18,
+    marginRight: 12,
+  },
+
+  navLink: {
+    color: "#CBD5E1",
+    fontSize: 14,
+    fontWeight: "800",
+  },
+
+  techLink: {
+    color: "#38BDF8",
+    fontSize: 14,
+    fontWeight: "900",
+  },
+});
