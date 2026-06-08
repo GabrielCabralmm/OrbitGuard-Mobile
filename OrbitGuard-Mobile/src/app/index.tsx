@@ -12,22 +12,26 @@ export default function HomeScreen() {
       <Text style={styles.title}>Sua região está segura?</Text>
 
       <Text style={styles.subtitle}>
-        Acompanhe alertas ambientais, regiões monitoradas e orientações de
-        proteção em tempo real.
+        Acompanhe alertas ambientais, regiões monitoradas, abrigos disponíveis
+        e orientações de proteção.
       </Text>
 
       <View style={styles.alertCard}>
-        <Text style={styles.alertLabel}>ALERTA PRINCIPAL</Text>
-        <Text style={styles.alertTitle}>Monitoramento ativo</Text>
+        <Text style={styles.alertLabel}>MONITORAMENTO CIDADÃO</Text>
+        <Text style={styles.alertTitle}>Proteção em tempo real</Text>
         <Text style={styles.alertText}>
-          Consulte os alertas registrados e acompanhe possíveis riscos em áreas
-          monitoradas.
+          Consulte informações importantes para agir com segurança em situações
+          de risco ambiental.
         </Text>
       </View>
 
       <View style={styles.grid}>
-        <Link href="/alertas" style={styles.primaryButton}>
-          Ver Alertas
+        <Link href="/painel" style={styles.primaryButton}>
+          Abrir Painel
+        </Link>
+
+        <Link href="/alertas" style={styles.secondaryButton}>
+          Alertas
         </Link>
 
         <Link href="/regioes" style={styles.secondaryButton}>
@@ -41,11 +45,11 @@ export default function HomeScreen() {
         <Link href="/sobre" style={styles.secondaryButton}>
           Orientações
         </Link>
-      </View>
 
-      <Link href="/usuarios" style={styles.technicalLink}>
-        Área técnica
-      </Link>
+        <Link href="/usuarios" style={styles.secondaryButton}>
+          Cadastro
+        </Link>
+      </View>
     </View>
   );
 }
@@ -162,12 +166,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#312E81",
     overflow: "hidden",
-  },
-
-  technicalLink: {
-    color: "#64748B",
-    textAlign: "center",
-    marginTop: 22,
-    fontWeight: "700",
   },
 });
