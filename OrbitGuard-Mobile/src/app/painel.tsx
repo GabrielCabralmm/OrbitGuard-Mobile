@@ -130,13 +130,13 @@ export default function PainelScreen() {
       </View>
 
       <View style={styles.actions}>
-        <Link href="/tabs/alertas" asChild>
+        <Link href="/alertas" asChild>
           <Pressable style={styles.primaryButton}>
             <Text style={styles.primaryButtonText}>Ver alertas</Text>
           </Pressable>
         </Link>
 
-        <Link href="/tabs/abrigos" asChild>
+        <Link href="/abrigos" asChild>
           <Pressable style={styles.secondaryButton}>
             <Text style={styles.secondaryButtonText}>Encontrar abrigos</Text>
           </Pressable>

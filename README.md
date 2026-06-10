@@ -10,13 +10,13 @@
 
 ## Repositório GitHub
 
-[INSERIR LINK DO GITHUB CLASSROOM]
+https://github.com/GabrielCabralmm/OrbitGuard-Mobile.git
 
 ---
 
 ## Vídeo Demonstrativo
 
-[INSERIR LINK DO YOUTUBE]
+https://youtu.be/Atsq9wgBayE
 
 ---
 
