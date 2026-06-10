@@ -8,12 +8,6 @@
 
 ---
 
-## Repositório GitHub
-
-[INSERIR LINK DO GITHUB CLASSROOM]
-
----
-
 ## Vídeo Demonstrativo
 
 [INSERIR LINK DO YOUTUBE]
